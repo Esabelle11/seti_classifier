@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SETI Signal Classifier</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>🛸 SETI Signal Classifier</h1>
+        <p class="subtitle">Upload an image to classify the signal pattern</p>
+
+        <div class="upload-section">
+            <div class="file-input-wrapper">
+                <input type="file" id="imageInput" accept="image/*">
+                <label for="imageInput" class="file-input-label">📁 Choose Image</label>
+            </div>
+            <p class="file-name" id="fileName"></p>
+            <img id="previewImage" class="preview-image" alt="Preview">
+            <button id="predictBtn" onclick="predictImage()" disabled>🔮 Predict</button>
+        </div>
+
+        <div class="loading" id="loading">
+            <div class="spinner"></div>
+            <p>Processing image...</p>
+        </div>
+
+        <div class="error" id="error"></div>
+
+        <div class="results-section" id="resultsSection">
+            <div class="result-grid">
+                <div class="result-card">
+                    <h3>📊 Prediction Result</h3>
+                    <div class="prediction-result" id="predictionResult"></div>
+                </div>
+                <div class="result-card">
+                    <h3>🔍 Class Activation Map</h3>
+                    <img id="camImage" class="cam-image" alt="CAM">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/static/script.js"></script>
+</body>
+</html>
