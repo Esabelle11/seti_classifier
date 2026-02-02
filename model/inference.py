@@ -2,9 +2,13 @@ import torch
 # from data.transforms import get_transform
 from model.loader import load_model
 import torchvision.transforms as T
+import os
+
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+weight_path = os.path.join(BASE_DIR, "..", "weight", "model_weights_vgg16pre.pth")
 
 
-model = load_model("weight\model_weights_vgg16pre.pth")
+model = load_model(weight_path)
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 # transform = get_transform()
 

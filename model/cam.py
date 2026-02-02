@@ -7,8 +7,13 @@ import base64
 import io
 from PIL import Image
 
+import os
 
-model = load_model("weight\model_weights_vgg16pre.pth")
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+weight_path = os.path.join(BASE_DIR, "..", "weight", "model_weights_vgg16pre.pth")
+
+
+model = load_model(weight_path)
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 # transform = get_transform()
 

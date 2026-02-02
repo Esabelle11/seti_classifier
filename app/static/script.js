@@ -28,7 +28,8 @@ imageInput.addEventListener('change', (e) => {
 
 // Predict image
 async function predictImage() {
-    const file = imageInput.files[0];
+    const fileInput = document.getElementById("imageInput"); // <input type="file">
+    const file = fileInput.files[0];
     if (!file) return;
 
     const formData = new FormData();
@@ -40,7 +41,9 @@ async function predictImage() {
         predictBtn.disabled = true;
 
         // Determine API URL - adjust if needed
-        const apiUrl = 'http://localhost:8000/predict';
+        // const apiUrl = 'http://localhost:8000/predict';
+        const apiUrl = '/predict';
+
 
         const response = await fetch(apiUrl, {
             method: 'POST',
