@@ -6,11 +6,14 @@ import cv2
 import base64
 import io
 from PIL import Image
+from huggingface_hub import hf_hub_download
 
 import os
 
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-weight_path = os.path.join(BASE_DIR, "..", "weight", "model_weights_vgg16pre.pth")
+weight_path = hf_hub_download(
+    repo_id="Esabelle/seti_classifier_vgg16_model",
+    filename="model_weights_vgg16pre.pth"
+)
 
 
 model = load_model(weight_path)
@@ -31,7 +34,9 @@ def CAM_ALG(image):
     # output of features and predict label
     model.eval()
     features = model.vgg16.features(image) #torch.Size([1, 256, 6, 6])
-    output = model.vgg16.classifier(features.flatten())
+    # Flatten features preserving batch dimension
+    features_flat = torch.flatten(features, 1)
+    output = model.vgg16.classifier(features_flat)
     # print(output)
     #print(output.shape)
     #pred_label= torch.argmax(output).item()

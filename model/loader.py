@@ -1,7 +1,8 @@
 import torch
 from model.vgg16 import VGG16
 
-DEVICE = torch.device("cpu")  # 强制 CPU
+# Choose GPU if available, otherwise CPU
+DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 def load_model(weight_path: str):
     model = VGG16()
