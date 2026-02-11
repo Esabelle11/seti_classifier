@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./weight:/app/weight:ro
+      - ./model:/app/model:ro
+      - ./app/static:/app/app/static:ro
+    restart: unless-stopped
+    environment:
+      - PYTHONUNBUFFERED=1
