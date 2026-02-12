@@ -27,48 +27,33 @@ transform = T.Compose([
 ])
 
 
-def CAM_ALG(image):
-    image = transform(image).unsqueeze(0).to(device)
 
-    
-    # output of features and predict label
+def CAM_ALG(image):
+    image = transform(image).unsqueeze(0).to(device)    
     model.eval()
     features = model.vgg16.features(image) #torch.Size([1, 256, 6, 6])
-    # Flatten features preserving batch dimension
-    features_flat = torch.flatten(features, 1)
-    output = model.vgg16.classifier(features_flat)
-    # print(output)
-    #print(output.shape)
-    #pred_label= torch.argmax(output).item()
-    
-    # 为了能读取到中间梯度定义的辅助函数
+    output = model.vgg16.classifier(features.flatten())
+
     def extract(g):
         global features_grad
         features_grad = g
  
-    # 预测得分最高的那一类对应的输出score
     pred_label = torch.argmax(output).item()
     pred_class = output[pred_label]
-    #print(pred_class)
  
     features.register_hook(extract)
-    pred_class.backward() # 计算梯度
-    grads = features_grad   # 获取梯度
-    #print(grads)
+    pred_class.backward() 
+    grads = features_grad   
     
     
     # Do Global Aberage Pooling
     GAP_features = torch.nn.functional.adaptive_avg_pool2d(grads,(1,1))
-    #print(GAP_features.shape) #torch.Size([1, 256, 1, 1])
     
     #Weight_sum_average on the features and features after GAP
     Weighted_sum = features*GAP_features
     Weighted_sum = Weighted_sum.squeeze().cpu().detach().numpy() #(256, 6, 6)
     cam = np.mean(Weighted_sum, axis=0) #(6, 6)
-    #print(cam)
     cam=np.maximum(cam,0)
-    #cam/= np.max(cam)
-    #print( np.max(np.maximum(cam,0.0001)))
     cam/= np.maximum(np.max(cam),0.00000000001)
 
     # Resize the CAM to the original image size and Min-Max Normalization
@@ -90,4 +75,3 @@ def CAM_ALG(image):
 
     return img_base64, pred_label
 
-    # return superimposed_img, pred_label

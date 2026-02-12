@@ -14,8 +14,11 @@ build/
 *.sqlite3
 
 # Virtual environments
+venv311/
+.venv311/
 venv/
 .venv/
+
 
 # Jupyter Notebook checkpoints
 .ipynb_checkpoints/
