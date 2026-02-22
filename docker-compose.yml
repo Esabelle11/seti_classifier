@@ -1,7 +1,7 @@
 version: '3.8'
 
 services:
-  doc-ai:
+  seti-classifier:
     build:
       context: .
       dockerfile: Dockerfile

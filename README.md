@@ -107,10 +107,10 @@ It is especially suited for visualizing how the network focuses on areas of the 
 
 1. **Build the image**
    ```bash
-   docker build -t doc-ai .
+   docker build -t seti-classifier .
    ```
 
 2. **Run the container**
    ```bash
-   docker run -p 8000:8000 -v $(pwd)/uploads:/app/uploads doc-ai
+   docker run -p 8888:8888 seti-classifier
    ```
