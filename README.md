@@ -45,8 +45,72 @@ It is especially suited for visualizing how the network focuses on areas of the 
 
 ## 🚀 Get Started
 
-### 1. Clone the repository
+## Prerequisites
 
-```bash
-git clone https://github.com/Esabelle11/seti_classifier.git
-cd seti_classifier
+- Python 3.11
+- Docker & Docker Compose (optional)
+- 4GB+ RAM (for transformer models)
+
+## Installation
+
+### Local Setup
+
+1. **Clone the repository**
+   ```bash
+    git clone https://github.com/Esabelle11/seti_classifier.git
+    cd seti_classifier
+    ```
+
+
+2. **Create and activate virtual environment**
+   ```bash
+   python -m venv venv
+   
+   # On Windows
+   venv\Scripts\activate
+   
+   # On Linux/Mac
+   source venv/bin/activate
+   ```
+
+3. **Install dependencies**
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+4. **Run the application**
+   ```bash
+   uvicorn app.main:app --reload
+   ```
+
+   The API will be available at `http://localhost:8000`
+
+## Docker Setup
+
+### Using Docker Compose (Recommended)
+
+1. **Build and run**
+   ```bash
+   docker-compose up -d
+   ```
+
+2. **Access the application**
+   - Frontend: `http://localhost:8000`
+   - API Docs: `http://localhost:8000/docs`
+
+3. **Stop the application**
+   ```bash
+   docker-compose down
+   ```
+
+### Using Docker Only
+
+1. **Build the image**
+   ```bash
+   docker build -t doc-ai .
+   ```
+
+2. **Run the container**
+   ```bash
+   docker run -p 8000:8000 -v $(pwd)/uploads:/app/uploads doc-ai
+   ```
