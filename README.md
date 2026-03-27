@@ -3,6 +3,7 @@
 Image classifier built with Convolutional Neural Networks (CNN) and Class Activation Map (CAM) support — a project for classifying radio-signal-style images and visualizing model interpretation during training.
 
 Live demo: https://huggingface.co/spaces/Esabelle/seti_classifier_demo
+
 training notebook: 
 https://www.kaggle.com/code/esabellechen/seti-signal-classifier-vgg16-pytorch
 https://www.kaggle.com/code/esabellechen/seti-signal-classifier-googlene-pytorch
