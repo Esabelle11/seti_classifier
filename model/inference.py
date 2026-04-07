@@ -3,18 +3,20 @@ import torch
 from model.loader import load_model
 import torchvision.transforms as T
 import os
-from huggingface_hub import hf_hub_download
+# from huggingface_hub import hf_hub_download
 
 
-# BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-# weight_path = os.path.join(BASE_DIR, "..", "weight", "model_weights_vgg16pre.pth")
-weight_path = hf_hub_download(
-    repo_id="Esabelle/seti_classifier_vgg16_model",
-    filename="model_weights_vgg16pre.pth"
-)
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+weight_path = os.path.join(BASE_DIR, "weight", "model_weights_GoogleNetpre.pth")
+
+# weight_path = hf_hub_download(
+#     repo_id="Esabelle/seti_classifier_vgg16_model",
+#     filename="model_weights_vgg16pre.pth"
+# )
 
 
 model = load_model(weight_path)
+print(f"Model loaded from {weight_path}")
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 # transform = get_transform()
 

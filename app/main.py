@@ -6,7 +6,8 @@ from PIL import Image
 import io
 import os
 from model.inference import predict
-from model.cam import CAM_ALG
+# from model.cam import CAM_ALG
+from model.cam_GoogleNet import CAM_ALG
 
 app = FastAPI(title="SETI Signal Classifier API")
 CLASS_NAMES = ['brightpixel','narrowband','narrowbanddrd','noise','squarepulsednarrowband','squiggle','squigglesquarepulsednarrowband']
