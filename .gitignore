@@ -4,7 +4,6 @@ __pycache__/
 *.pyo
 *.pyd
 *.pkl
-*.pth
 *.pt
 *.egg
 *.egg-info/
@@ -28,4 +27,4 @@ venv/
 Thumbs.db
 
 # Model weights (optional: if you want to keep large models locally)
-weight/
+# weight/
