@@ -20,7 +20,10 @@ It is especially suited for visualizing how the network focuses on areas of the 
 ✔️ Image preprocessing  
 ✔️ CAM visualization  
 ✔️ Evaluation and plotting
-<img width="995" height="770" alt="Screenshot 2026-04-07 at 8 11 36 PM" src="https://github.com/user-attachments/assets/7b19b3c5-2a4a-4605-9e89-a1bf91fe70f0" />
+
+## Demo Video
+https://youtu.be/yxtqx7oFAUk
+<!-- <img width="995" height="770" alt="Screenshot 2026-04-07 at 8 11 36 PM" src="https://github.com/user-attachments/assets/7b19b3c5-2a4a-4605-9e89-a1bf91fe70f0" /> -->
 
 ---
 
